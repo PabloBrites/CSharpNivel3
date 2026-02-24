@@ -1,0 +1,112 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Master.master.cs" Inherits="pokedex_web.Master" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Pokedex Web</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+    <form id="form1" runat="server" enctype="multipart/form-data">
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 fs-5">
+            <div class="container-fluid">
+                <a class="navbar-brand fs-4 fw-bold" href="/">POKEDEX WEB</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="PokemonLista.aspx">Lista Pokemons</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Favoritos.aspx">Favoritos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="MiPerfil.aspx">Mi Perfil</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="d-flex">
+                    <% if (!negocio.Seguridad.sesionActiva(Session["trainee"])){ %>
+                            <a href="Login.aspx" class="btn btn-success me-2">Login</a> <%--botones de login y registro--%>
+                            <a href="Registro.aspx" class="btn btn-outline-primary me-2">Registrarse</a>
+                    <%      //este if lo que hace es mostrar una cosa u otra, la condicion seria: si no hay una sesion activa entonces te muestro esto, sino te muestro esto otro   
+                       }    //este es el codigo que hace que no veas el btn de loguin ni registrarte al entrar
+                       else {
+                    %>          <%--aca esta el btn salir que tambien esta en el page load--%> 
+                            <asp:Button Text="Salir" ID="btnSalir" cssclass="btn btn-outline-primary me-2" OnClick="btnSalir_Click" runat="server" />
+                            <asp:Label id="lblUser" Text="user" CssClass="text-light m-auto me-2" runat="server" />
+                    <%} %>
+                    <asp:Image ID="imgAvatar" style="height:40px; width:40px; border-radius:50%;" 
+                        runat="server" />
+                </div> <%--esta foto de arriba es la auxiliar del avatar --%>
+            </div>
+        </nav>
+        <div class="container">
+            <hr />
+            <div>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+    </form>
+
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+    <!-- footer -->
+    <%--id="footerDefault" esta para manipularlo desde el back y hacer que el footer solo se vea en default--%>
+
+    <footer id="footerDefault" runat="server" class="bg-dark text-light mt-5 pt-4 pb-3">  
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-4 mb-3">
+                        <h5 class="text-danger fw-bold">Pokédex Web</h5>
+                        <p class="small text-secondary">
+                            Proyecto educativo desarrollado en ASP.NET.
+                            Explorá, aprendé y atrapalos a todos.
+                        </p>
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <h6 class="fw-bold">Secciones</h6>
+                        <ul class="list-unstyled">
+                            <li><a href="/" class="text-light text-decoration-none">Inicio</a></li>
+                            <li><a href="/PokemonList.aspx" class="text-light text-decoration-none">Pokémon</a></li>
+                            <li><a href="/MiPerfil.aspx" class="text-light text-decoration-none">Mi Perfil</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <h6 class="fw-bold">Autor</h6>
+                        <p class="small text-secondary mb-1">
+                            Desarrollado por <strong>Pablo Brites</strong>
+                        </p>
+                        <p class="small text-secondary mb-0">
+                            © <%= DateTime.Now.Year %> · Proyecto académico
+                        </p>
+                    </div>
+
+                </div>
+
+                <hr class="border-secondary">
+
+                <div class="text-center small text-secondary">
+                    Pokémon y Pokédex son marcas registradas de Nintendo / Game Freak.
+                    Uso con fines educativos.
+                </div>
+            </div>
+        </footer>
+
+</body>
+</html>
