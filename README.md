@@ -1,7 +1,6 @@
 
 😎Some illustrative images of what we worked on during the course.
 
-<img width="1913" height="1037" alt="Captura de pantalla (730)" src="https://github.com/user-attachments/assets/c7dc6fe5-c688-4e94-b60a-b7fe47180f5f" />
 <img width="1912" height="1045" alt="Captura de pantalla (740)" src="https://github.com/user-attachments/assets/a5064544-545f-47a4-bf52-44fec7e929ce" />
 <img width="1918" height="1034" alt="Captura de pantalla (739)" src="https://github.com/user-attachments/assets/c18d56d7-6590-427f-893f-3d30b4cbaae5" />
 <img width="1916" height="1039" alt="Captura de pantalla (738)" src="https://github.com/user-attachments/assets/927c3abd-625d-4ec3-9a18-5ff1145cc558" />
